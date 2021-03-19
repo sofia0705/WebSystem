@@ -13,7 +13,10 @@ class Registro extends CI_Controller {
 	
 	public function index()
 	{
+        $this->load->view('layout/menu');
+        $this->load->view('layout/header');
 		$this->load->view('admin/vistapers');
+        $this->load->view('layout/footer');
 	}
     public function guardar(){
        //usuario

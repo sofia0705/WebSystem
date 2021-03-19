@@ -22,7 +22,10 @@ class Login extends CI_Controller {
 		$res = $this->Mlogin->ingresar($usu,$pass);
 
 		if($res == false){
+			$this->load->view('layout/menu');
+			$this->load->view('layout/header');
 			$this->load->view('admin/vupdpersona');
+			$this->load->view('layout/footer');
 			
 		}else{
 			$data['mensaje']= "Usuario o contraseña erronea";
