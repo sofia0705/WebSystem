@@ -34,9 +34,9 @@
          <input type="date" class="form-control" name="datfecnac" id="inputFecha" >
        </div>
        <div class="form-group col-md-6">
-          <label for="inpuCuidad">Cuidad</label>
-          <select id="inputState" class="form-control">
-          <option selected>Elija...</option>
+          <label >Cuidad</label>
+          <select id="cboCuidad" class="form-control">
+          <option value="">Elija...</option>
           <option>...</option>
           </select>
     </div>
@@ -68,6 +68,29 @@
     </form>
 </form>
  <a href="<?= base_url('Login') ?>">Loguarse</a>
+ <br><br><br>
+    <button type="button" id="btnGetPersonas"  class="btn btn-flat"><i class="fa fa-search"> Buscar </i>
+    </button>
+    
+      <div class="card-body">
+        <div class="box box-primary">
+        <table class="table table-bordered" id="tblPersonas" width="100%" cellspacing="0">
+   <tr>
+        <th style="width: 10px">#</th>
+        <th>Nombre</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>Cuidad</th>
+   </tr>  
+
+      </table>
+      
+    </div>
+
+
+ <script type="text/javascript">
+ var baseurl = "<?= base_url('') ?>";
+ </script>
 </body>
 </html>
 

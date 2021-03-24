@@ -45,4 +45,12 @@ class Usuario extends CI_Controller {
         $this->db->delete('usuarios');
 
     }
+    public function getPersonas(){
+        $this->db->select('usuarios.nombre,usuarios.appaterno,usuarios.apmaterno,cuidad.cuidad');
+        $this->db->from('usuarios usuarios');
+        $this->db->join('cuidad cuidad','cuidad.id_cuidad = usuarios.id_cuidad');
+
+        $r= $this->db->get();
+        return  $r->result();
+    }
 }

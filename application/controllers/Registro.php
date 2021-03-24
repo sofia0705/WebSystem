@@ -52,5 +52,8 @@ class Registro extends CI_Controller {
        $this->Usuario->eliminarPersona($idP);
        //$this->Mpersonas->eliminarPersona($idP);
     }
+    public function getPersonas(){
+        echo json_encode($this->Usuario->getPersonas());
+    }
     
 }
