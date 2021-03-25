@@ -22,4 +22,10 @@ class Mpersonal extends CI_Controller {
 
         return $this->db->insert_id();
     }
+    public function subir($imagen){
+        $data = array(
+            'archivo' => $imagen
+        );
+        return $this->db->insert('personal', $data);
+    }
 }

@@ -18,25 +18,9 @@
         </div>
 	</div>
     <br><br>
-    <form autocomplete="off" class="form-inline" id="formArchivos" method="POST">
-        <div class="container">
-        <div class="abs-center">
-           <label>Nombre del Documento: </label>
-           <div class="input-group">
-             <samp class="input-group-addon">
-             <i class="fa fa-file" aria-hidden="true"></i>
-             </samp>
-             <input type="text" name="nombre" placeholder="Nombre del Documento" class="form-control" required="required">
-           </div>
-           <button class="btn btn-ligth btn-sm" id="upfile">
-           <i class="fa fa-upload" id="ico-btn-file" aria-hidden="true"></i>
-           </button>
-
-           <input type="file" name="archivo" id="getfile" class="hidden" required="required" accept="application/pdf"/>
-           <input type="submit" form="formArchivos" id="smtArchivo" class="btn btn-success btn-sm" value="Agregar">
-        </div>
-        </div>
-      
+    <form class="form-inline my-2 my-lg-0 col-sm-10">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button  id="btnGetPersonal"class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
     
     
@@ -44,35 +28,43 @@
        <table class="table">
           <thead class="bg-warning">
                <tr>
-                  <th class="text-center bg-warning" scope="col">ID</th>
-                  <th  class="bd-warning" scope="col">Descripcion del archivo adjunto</th>
-                  <th class="text-center bg-warning"  scope="col">Acciones</th>
+                  <th  scope="col">ID</th>
+                  <th  scope="col">Nombre</th>
+                  <th  scope="col">Correo</th>
+                  <th scope="col">Telefono</th>
+                  <th ></th>
+                  <th></th>
                   
                </tr>
           </thead>
           <tbody>
-          <?php
-          $contador = 1;
-          foreach($archivos as $archivos){
-              ?>
-            <tr>
-            <td class="text-center"><?php $contador ?></td>
-            <td><?php $archivos['nombre'] ?></td>
-            <td class="text-center"></td>
-            <td>
-            <a class="btn btn-primary btn-xs" href="<?= base_url('') ?>" target="_blank">
-            <i class="fa fa-eye" aria-hidden="true"></i></a>
-            <button class="btn btn-danger btn-xs delArchivo" data-id="0">
-            <i class="fa fa-trash" aria-hidden="true"></i></button>
-            </td>
-            </tr>
-              <?php
-               $contador ++;
-          }
-          ?>
+          
           
           </tbody>
        </table>
+
+       <!-- Modal -->
+		<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Eliminar Registro</h4>
+					</div>
+					
+					<div class="modal-body">
+						¿Desea eliminar este registro?
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<a class="btn btn-danger btn-ok">Delete</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
        <script lenguaje="javascript">
         var baseurl = "<?= base_url('') ?>";
     </script>

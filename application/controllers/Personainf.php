@@ -10,6 +10,11 @@ class Personainf extends CI_Controller {
     }
     public function index()
 	{
+        $data['error'] = "";
+        $data['errorArch'] = "";
+        $data['estado'] = "";
+        $data['archivo'] = "";
+
         $this->load->view('layout/menu');
         $this->load->view('layout/header');
 		$this->load->view('admin/vpersonal');
@@ -31,10 +36,74 @@ class Personainf extends CI_Controller {
          $this->load->view('admin/vpersonal');
          $this->load->view('layout/footer');
 
-        
-
-}
+        }
+        public function subirImagen(){
+            $config['upload_path'] = 'uploads/imagenes/thumbs';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = '20048';
+            $config['max_width'] = '2024';
+            $config['max_heigth'] = '2008';
     
+            $this->load->library('upload',$config);
+    
+            if($this->vpersonal->do_upload('fileImagen')){
+                $data['error'] = $this->vpersonal->display_errors();
+                $this->load->view('layout/menu');
+                $this->load->view('layout/header');
+                $this->load->view('admin/vpersonal', $data);
+                $this->load->view('layout/footer');
+    
+            }else{
+                $file_info = $this->vpersonal->data();
+    
+                // $this->crearMiniatura($file_info['file_name']);
+            
+                $imagen = $file_info['file_name'];
+                $subir = $this->Mpersonal->subir($imagen);
+                $data['imagen'] = $imagen;
+    
+                $this->load->view('layout/menu');
+                $this->load->view('layout/header');
+                $this->load->view('admin/vpersonal', $data);
+                $this->load->view('layout/footer');
+    
+            }
+        }
+        public function subirArchivo(){
+            $config['upload_path'] ='uploads/archivos';
+            $config['allowed_types'] ='pdf|xlsx|docx';
+            $config['max_size'] ='20048';
+    
+            $this->load->library('upload', $config);
+    
+            if(!$this->vpersonal->do_upload('fileImagen')){
+                $data['errorArch'] = $this->vpersonal->display_errors();
+                $this->load->view('layout/menu');
+                $this->load->view('layout/header');
+                $this->load->view('admin/vpersonal', $data);
+                $this->load->view('layout/footer');
+    
+    
+            }else{
+                $file_info = $this->vpersonal->data();
+    
+               
+                $archivo = $file_info['file_name'];
+                $subir = $this->Mpersonal->subir($archivo);
+                $data['estado'] ="Archivo subido.";
+                $data['archivo'] = $archivo;
+                $data['error'] = "";
+                $data['errorArch'] = "";
+    
+                $this->load->view('layout/menu');
+                $this->load->view('layout/header');
+                $this->load->view('admin/vpersonal', $data);
+                $this->load->view('layout/footer');
+    
+    
+            }
+    
+        }
 }
 
 

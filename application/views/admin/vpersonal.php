@@ -72,6 +72,15 @@
 						</label>
 					</div>
 				</div>
+				<?php $error; ?>
+				<div class="form-group">
+				
+				   <div class="col-sm-10">
+                   <td><label for="archivo" name="titImagen">Archivo</label></td>
+                   <input type="file"  name="fileImagen" class="form-control-file" id="archivo">
+				   </div>
+				
+                </div>
 				
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
@@ -80,5 +89,7 @@
 					</div>
 				</div>
 			</form>
+			<?php $errorArch; ?>
+            <?php $estado; ?>
 		</div>
 	</body>

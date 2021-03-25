@@ -14,7 +14,7 @@
     <form action="<?= base_url('/Registro/guardar')  ?>" method="POST">
     <table>
     <form>
-  <div class="form-row">
+  <div class="form-row col-sm-10">
        <div class="form-group col-md-6">
          <label for="inputNombre">Nombre </label>
          <input type="text" class="form-control " name="txtnombre" id="inputNombre" placeholder="Nombre">
@@ -41,7 +41,7 @@
           </select>
     </div>
     </div>
-    <div class="form-row">
+    <div class="form-row col-sm-10">
       <div class="form-group col-md-6">
       <label for="inputCorreo">Correo Electronico</label>
       <input type="email" class="form-control" name="txtcorreo" id="inputCorreo" placeholder="Correo Electronico">
@@ -50,7 +50,7 @@
        <div class="text-center">
          <h1  class="h4 text-gray-900 mb-4"> Usuario</h1>
        </div>
-          <div class="form-row">
+          <div class="form-row col-sm-10">
             <div class="form-group col-md-6">
             <label for="inputUser">Usuario </label>
             <input type="text" class="form-control " name="user" id="inputUser" placeholder="Usuario">

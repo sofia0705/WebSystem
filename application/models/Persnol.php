@@ -8,19 +8,14 @@ class Persnol extends CI_Model {
         
         
     }
-    public function Insert($datos){
-        $campos = array(
-            'nombre' => $datos['nombre'],
-            'archivo' => $datos['archivo']
-            
-            
-        );
-        $this->db->insert('archivos', $campos);
+    public function getPersonal(){
+        $this->db->select('personal.id,personal.nombre,personal.correo,personal.telefono,personal.archivo');
+        $this->db->from('personal personal');
+       
 
-        return $this->db->insert_id();
+        $r= $this->db->get();
+        return  $r->result();
     }
-    public function getArchivo(){
-        $query = $this->db->query("SELECT * FROM archivos");
-        return $query->result_array();
-    }
+    
+    
 }

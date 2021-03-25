@@ -28,7 +28,7 @@ class Upload extends CI_Controller {
 
         $this->load->library('upload',$config);
 
-        if($this->upload->do_upload('fileImegen')){
+        if($this->upload->do_upload('fileImagen')){
             $data['error'] = $this->upload->display_errors();
             $this->load->view('layout/menu');
             $this->load->view('layout/header');

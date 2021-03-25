@@ -1,35 +1,33 @@
-$(document).ready(function(){
-    $("#upfile").on("click",function(){
-        $("#getfile").click();
-        return false;
+$('#btnGetPersonal').click(function(){
+    //alert('entro al boton');
+    $('#tblPersonal').html(
+    '<tr>'+
+        '<th style="width: 10px">#</th>'+
+        '<th>ID</th>'+
+        '<th>nombre</th>'+
+        '<th>Correo</th>'+
+        '<th>Telefono</th>'+
+        '<th>Archivo</th>'+
+   '</tr>'
 
-    });
-    $("#getfile").on("change", function(){
-        $("#upfile").removeClass("btn-ligth");
-        $("#upfile").addClass(btn-primary);
-        $("#ico-btn-file").removeClass("fa-upload");
-        $("#ico-btn-file").addClass("fa-check");
+    );
+    $.post(baseurl= "Personal/getPersonal",
+    function(data){
+        //alert(data)
+        var p = JSON.parse(data);
+        $.each(p, function(i,item){
+            $('#tblPersonal').append(
+                '<tr>'+
+                    '<td>'+item.id+'</td>'+
+                    '<td>'+ item.nombre +'</td>'+
+                    '<td>'+ item.correo +'</td>'+
+                    '<td>'+ item.telefono +'</td>'+
+                    '<td>'+ item.archivo +'</td>'+
+               '</tr>'
 
-        return false;
-
-
-    });
-    $("body").on("submit", "#formArchivos", function(){
-        var formData = new formData($("#formArchivos").get(0));
-        $("#smtArchivo").prop('disabled', true);
-        $.ajax({
-            url: base_url= "Personal/addfile",
-            type: "POST",
-           // dataType: "json",
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(resultadoItem){
-                location.reload();
-            }
+            );
         });
-        return false;
 
     });
-    
+
 });
