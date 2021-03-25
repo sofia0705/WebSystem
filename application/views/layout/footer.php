@@ -1,5 +1,7 @@
 </div>
 </div>
+<!-- End of Content Wrapper -->
+</div>
         <!-- End of Content Wrapper -->
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
@@ -34,6 +36,10 @@
     <?php if($this->uri->segment(1)=='Registro'){?>
         <script src="<?= base_url('js/persona.js') ?>"></script>
     <?php }?>
+    <script lenguaje="javascript">
+        var baseurl = "<?= base_url('') ?>";
+    </script>
+    <script src="<?= base_url('js/archivos.js') ?>"></script>
     
 
 </body>
