@@ -56,7 +56,7 @@ class Personainf extends CI_Controller {
             }else{
                 $file_info = $this->vpersonal->data();
     
-                // $this->crearMiniatura($file_info['file_name']);
+                
             
                 $imagen = $file_info['file_name'];
                 $subir = $this->Mpersonal->subir($imagen);

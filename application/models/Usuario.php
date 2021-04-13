@@ -1,50 +1,27 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usuario extends CI_Controller {
+class Usuario extends CI_Model {
     public function __construct()
     {
         parent::__construct();
         
         
     }
-    public function guardar($param){
-        $campos = array(
-            'nombre' => $param['nombre'],
-            'appaterno' => $param['appaterno'],
-            'apmaterno' => $param['apmaterno'],
-            'fecnac' => $param['fecnac'],
-            'correo' => $param['correo']
-            
-        );
-        $this->db->insert('usuarios', $campos);
+    public function guardar($datos){
+        
+        $this->db->insert('usuarios',$datos);
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
+        
 
-        return $this->db->insert_id();
+        
     }
-    public function actualizarDatos($dato){
-        $campos = array(
-            'nombre' => $dato['nombre'],
-            'appaterno' => $dato['appaterno'],
-            'apmaterno' => $dato['apmaterno'],
-            'correo' => $dato['correo']
-            
-        );
-        $this->db->update('usuarios',$campos);
-        // $this->db->where('id_persona','1' );
 
-        return 1;
-
-    
-    }
-    public function eliminarPersona($idP){
-        $campos = array(
-            'id_persona' => $idP,
-
-        );
-        $this->db->where('id_persona',$idP);
-        $this->db->delete('usuarios');
-
-    }
+   
     public function getPersonas(){
         $this->db->select('usuarios.nombre,usuarios.appaterno,usuarios.apmaterno,cuidad.cuidad');
         $this->db->from('usuarios usuarios');

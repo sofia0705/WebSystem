@@ -16,22 +16,30 @@ class Login extends CI_Controller {
 	}
 
 	public function ingresar(){
+		    $this->load->view('layout/menu');
+			$this->load->view('layout/header');
+			$this->load->view('admin/vprincipal');
+			$this->load->view('layout/footer');
+		
 		$usu = $this->input->post('user');
 		$pass = $this->input->post('txtcontrasena');
 
-		$res = $this->Mlogin->ingresar($usu,$pass);
+		$res = $this->Mlogin->login($usu,$pass);
 
-		if($res == false){
-			$this->load->view('layout/menu');
-			$this->load->view('layout/header');
-			$this->load->view('admin/vupdpersona');
-			$this->load->view('layout/footer');
+		if($res){
+			$data = [
+				"id" => $res->id_persona,
+				'name' => $res->nombre_usuario,
+				'login' => TRUE
+				
+			];
+			//$this->session->set_userdata($data);
 			
 		}else{
-			$data['mensaje']= "Usuario o contraseña erronea";
-			$this->load->view('login',$data);
+			echo "error";
 
 		}
+		
 		
 
 	}

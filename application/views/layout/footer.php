@@ -3,6 +3,10 @@
 <!-- End of Content Wrapper -->
 </div>
         <!-- End of Content Wrapper -->
+        <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -40,8 +44,7 @@
         var baseurl = "<?= base_url('') ?>";
     </script>
     <script src="<?= base_url('js/archivos.js') ?>"></script>
+    </div>
     
 
-</body>
-
-</html>
+   

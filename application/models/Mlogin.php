@@ -1,11 +1,23 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Mlogin extends CI_Controller {
+class Mlogin extends CI_Model {
     public function __construct()
     {
         parent::__construct();
         
+
+    }
+    public function login($usu,$pass){
+        $this->db->where('nombre_usuario',$usu);
+        $this->db->where('contrasena',$pass);
+        $resultados = $this->db->get('usuarios');
+        if($resultados->num_rows()>0){
+            return $resultados->row();
+
+        }else{
+            return false;
+        }
 
     }
     public function ingresar($usu, $pass){

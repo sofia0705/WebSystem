@@ -1,98 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
+
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>WebSysten-Registro</title>
-</head>
-<body>
-    <div class="text-center">
-       <h1  class="h4 text-gray-900 mb-4">Registro de Usuarios</h1>
-    </div>
-    
-    <form action="<?= base_url('/Registro/guardar')  ?>" method="POST">
-    <table>
-    <form>
-  <div class="form-row col-sm-10">
-       <div class="form-group col-md-6">
-         <label for="inputNombre">Nombre </label>
-         <input type="text" class="form-control " name="txtnombre" id="inputNombre" placeholder="Nombre">
-       </div>
-       <div class="form-group col">
-         <label for="inputPaterno">Apellido Paterno</label>
-         <input type="text" class="form-control"  name="txtappaterno" id="inputPaterno" placeholder="Apellido Paterno">
-       </div>
-       <div class="form-group col">
-         <label for="inputMaterno">Apelllido Materno</label>
-         <input type="text" class="form-control" name="txtapmaterno" id="inputMaterno" placeholder="Apellido Materno">
-       </div>
-    </div>
-    <div>
-       <div class="form-group col-md-6">
-         <label for="inputFecha">Fecha de Nacimiento</label>
-         <input type="date" class="form-control" name="datfecnac" id="inputFecha" >
-       </div>
-       <div class="form-group col-md-6">
-          <label >Cuidad</label>
-          <select id="cboCuidad" class="form-control">
-          <option value="">Elija...</option>
-          <option>...</option>
-          </select>
-    </div>
-    </div>
-    <div class="form-row col-sm-10">
-      <div class="form-group col-md-6">
-      <label for="inputCorreo">Correo Electronico</label>
-      <input type="email" class="form-control" name="txtcorreo" id="inputCorreo" placeholder="Correo Electronico">
-      </div>
-  </div>
-       <div class="text-center">
-         <h1  class="h4 text-gray-900 mb-4"> Usuario</h1>
-       </div>
-          <div class="form-row col-sm-10">
-            <div class="form-group col-md-6">
-            <label for="inputUser">Usuario </label>
-            <input type="text" class="form-control " name="user" id="inputUser" placeholder="Usuario">
-        </div>
-       
-    </div>
-    <div class="form-group col-md-6">
-         <label for="inputPassword">Contraseña</label>
-         <input type="password" class="form-control" name="txtcontrasena" id="inputPassword" placeholder="Contraseña">
-       </div>
-  </div>
-  <button type="submit" class="btn btn-primary" value="Guardar">Guardar</button>
 
-    </table>
-    </form>
-</form>
- <a href="<?= base_url('Login') ?>">Loguarse</a>
- <br><br><br>
-    <button type="button" id="btnGetPersonas"  class="btn btn-flat"><i class="fa fa-search"> Buscar </i>
-    </button>
-    
-      <div class="card-body">
-        <div class="box box-primary">
-        <table class="table table-bordered" id="tblPersonas" width="100%" cellspacing="0">
-   <tr>
-        <th style="width: 10px">#</th>
-        <th>Nombre</th>
-        <th>Apellido Paterno</th>
-        <th>Apellido Materno</th>
-        <th>Cuidad</th>
-   </tr>  
+    <!-- Custom fonts for this template-->
+    <link href="<?= base_url(' assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet')?>" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-      </table>
+    <!-- Custom styles for this template-->
+    <link href="<?= base_url('assets/css/sb-admin-2.min.css')?>" rel="stylesheet">
       
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+<div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                       
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Crear Cuenta!</h1>
+                                <!--<div class="alert alert-danger" id= msg-error style="text-align:left;">
+                                <strong>¡Importante!</strong>Corregir los siguiente errores.
+                                <div class="list-errors"></div>
+                                </div>-->
+                            </div>
+                              <form action="<?= base_url('Registro/guardar') ?>" method="POST" id="guardar">
+                             
+                                <div class="form-group">
+                                    <div class="form-group">
+                                    
+                                        <input type="text" class="form-control" name="txtnombre" id="inputNombre"
+                                            placeholder="Nombre">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control"  name="txtappaterno" id="inputPaterno"
+                                     placeholder="Apellido Paterno">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control"  name="txtapmaterno" id="inputMaterno"
+                                        placeholder="Apellido Materno">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                   <label for="inputFecha">Fecha de Nacimiento</label>
+                                   <input type="date" class="form-control" name="datfecnac" id="inputFecha" >
+                                </div>
+                                <div class="form-group row">
+                                   <div class="col-sm-6 mb-3 mb-sm-0">
+                                       <label >Cuidad</label>
+                                       <select id="cboCuidad" class="form-control">
+                                       <option value="">Elija...</option>
+                                       <option>...</option>
+                                       </select>
+                                   </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control"  name="txtcorreo"
+                                            id="inputCorreo" placeholder="Correo Electronico">
+                                    </div>
+                                </div>
+                                <br>
+
+                                <div class="text-center">
+                                     <h1  class="h4 text-gray-900 mb-4"> Usuario</h1>
+                                </div>
+                                    
+                                <div class="form-group row ">
+                                    <div class="col-md-12 mb-3 mb-sm-0">
+                                     <input type="text" class="form-control " name="user" id="inputUser" placeholder="Usuario">
+                                    </div>
+                                </div>
+                                    <div class="from-group">
+                                        <input type="password" class="form-control" name="txtcontrasena"
+                                            id="inputPassword" placeholder="Contraseña">
+                                    </div>
+                                </div>
+                                <input type="submit"  class="btn btn-primary btn-user btn-block" value="Registrar Cuenta">
+                                
+                               
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="<?= base_url('Reactualizacion/actualizarDatos') ?>">Actualiza tus datos?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="<?= base_url('Login') ?>">Ya tienes cuenta? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+    
+ <!-- Bootstrap core JavaScript-->
+ <script src="<?= base_url('assets/vendor/jquery/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 
+    <!-- Core plugin JavaScript-->
+    <script src="<?= base_url('assets/vendor/jquery-easing/jquery.easing.min.js') ?>"></script>
 
- <script type="text/javascript">
- var baseurl = "<?= base_url('') ?>";
- </script>
+    <!-- Custom scripts for all pages-->
+    <script src="<?= base_url('assets/js/sb-admin-2.min.js') ?>"></script>
+    <!--scripts-->
+    <script src="<?= base_url('js/scripts.js') ?>"></script>
+
 </body>
+
 </html>
+
 
 
 
