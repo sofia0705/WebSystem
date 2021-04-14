@@ -29,31 +29,43 @@ class Registro extends CI_Controller {
        $correo = $this->input->post('txtcorreo');
 
        //alta usuario
-       $nombre_usuario = $this->input->post('user');
+       $nombre_usuario = $this->input->post('username');
        $contrasena= $this->input->post('txtcontrasena');
+
        
 
-       $datos=array(
-           'nombre' =>$nombre,
-           'appaterno' => $appaterno,
-           'apmaterno' => $apmaterno,
-           'fecnac' => $fecnac,
-           'correo' => $correo,
-           'nombre_usuario' => $nombre_usuario,
-           'contrasena' => $contrasena
-           
+        $this->form_validation->set_rules();
+         if ($this->form_validation->run() == FALSE){
+             $this->load->view('admin/vistapers');
 
-       );
+         }else{
+            $datos=array(
+                'nombre' =>$nombre,
+                'appaterno' => $appaterno,
+                'apmaterno' => $apmaterno,
+                'fecnac' => $fecnac,
+                'correo' => $correo,
+                'nombre_usuario' => $nombre_usuario,
+                'contrasena' => $contrasena
+                
+     
+            );
+            
+             
+             if($this->Usuario->guardar($datos) == true) {
+                echo "registro guardado";
+     
+             }else
+             {
+                 echo "No se pudo guardar el registro";
+             }
+            }
+
+         }
+
        
-        
-        if($this->Usuario->guardar($datos) == true) {
-           echo "registro guardado";
 
-        }else
-        {
-            echo "No se pudo guardar el registro";
-        }
-       }
+      
          
 
    }

@@ -6,6 +6,7 @@ class Personainf extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Mpersonal');
+        $this->load->library('form_validation');
        
     }
     public function index()
@@ -29,7 +30,16 @@ class Personainf extends CI_Controller {
          $data['hijos'] = $this->input->post('txthijos');
          $data['intereses'] = $this->input->post('txtintereses');
 
-         $this->Mpersonal->Info($data);
+         
+
+         if($this->Mpersonal->Info($data)== true){
+            echo "Guardado";
+
+         }else{
+            echo "No se pudo guardar";
+
+         }
+         
          
          $this->load->view('layout/menu');
          $this->load->view('layout/header');
@@ -104,6 +114,8 @@ class Personainf extends CI_Controller {
             }
     
         }
+        
+        
 }
 
 

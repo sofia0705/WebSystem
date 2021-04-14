@@ -42,12 +42,13 @@
                                 </div>-->
                             </div>
                               <form action="<?= base_url('Registro/guardar') ?>" method="POST" id="guardar">
-                             
+                             <?php echo validation_errors() ?>
                                 <div class="form-group">
                                     <div class="form-group">
                                     
                                         <input type="text" class="form-control" name="txtnombre" id="inputNombre"
                                             placeholder="Nombre">
+                                            
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -88,7 +89,7 @@
                                     
                                 <div class="form-group row ">
                                     <div class="col-md-12 mb-3 mb-sm-0">
-                                     <input type="text" class="form-control " name="user" id="inputUser" placeholder="Usuario">
+                                     <input type="text" class="form-control " name="username" id="inputUser" placeholder="Usuario">
                                     </div>
                                 </div>
                                     <div class="from-group">

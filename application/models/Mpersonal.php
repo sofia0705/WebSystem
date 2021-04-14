@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Mpersonal extends CI_Controller {
+class Mpersonal extends CI_Model {
     public function __construct()
     {
         parent::__construct();
@@ -22,10 +22,11 @@ class Mpersonal extends CI_Controller {
 
         return $this->db->insert_id();
     }
-    public function subir($imagen){
+    public function subir($archivo){
         $data = array(
-            'archivo' => $imagen
+            'archivo' => $archivo
         );
         return $this->db->insert('personal', $data);
     }
+    
 }
